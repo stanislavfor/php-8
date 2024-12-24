@@ -6,10 +6,6 @@ use Geekbrains\Application1\Domain\Controllers\AbstractController;
 use Geekbrains\Application1\Infrastructure\Config;
 use Geekbrains\Application1\Infrastructure\Storage;
 use Geekbrains\Application1\Application\Auth;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-use Monolog\Level;
-use FirePHP;
 
 class Application {
 
@@ -23,19 +19,11 @@ class Application {
     public static Storage $storage;
 
     public static Auth $auth;
-    public static Logger $logger; 
 
     public function __construct(){
         Application::$config = new Config();
         Application::$storage = new Storage();
         Application::$auth = new Auth();
-
-        Application::$logger = new Logger("application_logger");
-        Application::$logger->pushHandler(new StreamHandler(
-            $_SERVER['DOCUMENT_ROOT'] . "/log/" . Application::$config->get()['log']['LOGS_FILE'], Level::Debug)
-        );
-
-        Application::$logger->pushHandler(new FirePHPHandler());
     }
 
     public function run() : string {
