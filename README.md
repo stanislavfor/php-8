@@ -28,7 +28,6 @@
 
 ```
 http://mysite.local/missingnomethod/method
-
 ```
 
    &nbsp;&nbsp;&nbsp;на экран выведется ошибка: 
